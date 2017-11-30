@@ -1,0 +1,286 @@
+
+BOUGHT the very first at  1276.35
+SL:  1273.54203 , TP: 1281.4554 
+
+Trade number:  1
+SOLD number of shares  1
+Stop loss  triggered at  387  number. Trade executed at value  1273.54203
+Loss:  0.0
+TP: 1268.44786188 , SL:  1276.34382247 
+
+Total funds  9900
+
+
+Trade number:  2
+BOUGHT number of shares  2
+Stop loss  triggered at  450  number of trade. Executed at value  1276.34382247
+Loss:  0.0
+SL:  1273.53586606 , TP: 1281.44919776 
+
+Total funds  9700
+
+
+Trade number:  3
+SOLD number of shares  4
+Stop loss  triggered at  453  number. Trade executed at value  1273.53586606
+Loss:  0.0
+TP: 1268.44172259 , SL:  1276.33764496 
+
+Total funds  9300
+
+
+Trade number:  4
+BOUGHT number of shares  8
+Stop loss  triggered at  471  number of trade. Executed at value  1276.33764496
+Loss:  0.0
+SL:  1273.52970214 , TP: 1281.44299554 
+
+Total funds  8500
+
+
+Trade number:  5
+SOLD number of shares  16
+Target point  triggered at  472  number of trade. Executed at value  1281.44299554
+Profit:  0.0
+TP: 1276.31722356 , SL:  1284.26217013 
+
+Total funds  10100
+
+
+Trade number:  6
+BOUGHT number of shares  1
+Stop loss  triggered at  664  number of trade. Executed at value  1284.26217013
+Loss:  0.0
+SL:  1281.43679336 , TP: 1289.39921881 
+
+Total funds  10000
+
+
+Trade number:  7
+SOLD number of shares  2
+Target point  triggered at  729  number of trade. Executed at value  1289.39921881
+Profit:  0.0
+TP: 1284.24162194 , SL:  1292.23589709 
+
+Total funds  10200
+
+
+Trade number:  8
+BOUGHT number of shares  1
+Target point  triggered at  744  number. Trade executed at value  1284.24162194
+Profit:  0.0
+SL:  1281.41629037 , TP: 1289.37858842 
+
+Total funds  10300
+
+
+Trade number:  9
+SOLD number of shares  1
+Stop loss  triggered at  748  number. Trade executed at value  1281.41629037
+Loss:  0.0
+TP: 1276.29062521 , SL:  1284.23540621 
+
+Total funds  10200
+
+
+Trade number:  10
+BOUGHT number of shares  2
+Target point  triggered at  903  number. Trade executed at value  1276.29062521
+Profit:  0.0
+SL:  1273.48278583 , TP: 1281.39578771 
+
+Total funds  10400
+
+
+Trade number:  11
+SOLD number of shares  1
+Target point  triggered at  1005  number of trade. Executed at value  1281.39578771
+Profit:  0.0
+TP: 1276.27020456 , SL:  1284.21485844 
+
+Total funds  10500
+
+
+Trade number:  12
+BOUGHT number of shares  1
+Stop loss  triggered at  1148  number of trade. Executed at value  1284.21485844
+Loss:  0.0
+SL:  1281.38958575 , TP: 1289.35171788 
+
+Total funds  10400
+
+
+Trade number:  13
+SOLD number of shares  2
+Stop loss  triggered at  1208  number. Trade executed at value  1281.38958575
+Loss:  0.0
+TP: 1276.26402741 , SL:  1284.20864284 
+
+Total funds  10200
+
+
+Trade number:  14
+BOUGHT number of shares  4
+Stop loss  triggered at  1240  number of trade. Executed at value  1284.20864284
+Loss:  0.0
+SL:  1281.38338383 , TP: 1289.34547741 
+
+Total funds  9800
+
+
+Trade number:  15
+SOLD number of shares  8
+Target point  triggered at  1319  number of trade. Executed at value  1289.34547741
+Profit:  0.0
+TP: 1284.1880955 , SL:  1292.18203746 
+
+Total funds  10600
+
+
+Trade number:  16
+BOUGHT number of shares  1
+Stop loss  triggered at  1333  number of trade. Executed at value  1292.18203746
+Loss:  0.0
+SL:  1289.33923698 , TP: 1297.35076561 
+
+Total funds  10500
+
+
+Trade number:  17
+SOLD number of shares  2
+Stop loss  triggered at  1561  number. Trade executed at value  1289.33923698
+Loss:  0.0
+TP: 1284.18188003 , SL:  1292.1757833 
+
+Total funds  10300
+
+
+Trade number:  18
+BOUGHT number of shares  4
+Target point  triggered at  1593  number. Trade executed at value  1284.18188003
+Profit:  0.0
+SL:  1281.3566799 , TP: 1289.31860755 
+
+Total funds  10700
+
+
+Trade number:  19
+SOLD number of shares  1
+Stop loss  triggered at  1594  number. Trade executed at value  1281.3566799
+Loss:  0.0
+TP: 1276.23125318 , SL:  1284.17566459 
+
+Total funds  10600
+
+
+Trade number:  20
+BOUGHT number of shares  2
+Target point  triggered at  1611  number. Trade executed at value  1276.23125318
+Profit:  0.0
+SL:  1273.42354442 , TP: 1281.33617819 
+
+Total funds  10800
+
+
+Trade number:  21
+SOLD number of shares  1
+Target point  triggered at  1760  number of trade. Executed at value  1281.33617819
+Profit:  0.0
+TP: 1276.21083348 , SL:  1284.15511778 
+
+Total funds  10900
+
+
+Trade number:  22
+BOUGHT number of shares  1
+Stop loss  triggered at  1853  number of trade. Executed at value  1284.15511778
+Loss:  0.0
+SL:  1281.32997652 , TP: 1289.29173825 
+
+Total funds  10800
+
+
+Trade number:  23
+SOLD number of shares  2
+Stop loss  triggered at  1864  number. Trade executed at value  1281.32997652
+Loss:  0.0
+TP: 1276.20465662 , SL:  1284.14890247 
+
+Total funds  10600
+
+
+Trade number:  24
+BOUGHT number of shares  4
+Stop loss  triggered at  2040  number of trade. Executed at value  1284.14890247
+Loss:  0.0
+SL:  1281.32377489 , TP: 1289.28549808 
+
+Total funds  10200
+
+
+Trade number:  25
+SOLD number of shares  8
+Target point  triggered at  2129  number of trade. Executed at value  1289.28549808
+Profit:  0.0
+TP: 1284.12835609 , SL:  1292.12192618 
+
+Total funds  11000
+
+
+Trade number:  26
+BOUGHT number of shares  1
+Stop loss  triggered at  2164  number of trade. Executed at value  1292.12192618
+Loss:  0.0
+SL:  1289.27925794 , TP: 1297.29041388 
+
+Total funds  10900
+
+
+Trade number:  27
+SOLD number of shares  2
+Stop loss  triggered at  2287  number. Trade executed at value  1289.27925794
+Loss:  0.0
+TP: 1284.12214091 , SL:  1292.11567231 
+
+Total funds  10700
+
+
+Trade number:  28
+BOUGHT number of shares  4
+Stop loss  triggered at  2350  number of trade. Executed at value  1292.11567231
+Loss:  0.0
+SL:  1289.27301783 , TP: 1297.284135 
+
+Total funds  10300
+
+
+Trade number:  29
+SOLD number of shares  8
+Stop loss  triggered at  2403  number. Trade executed at value  1289.27301783
+Loss:  0.0
+TP: 1284.11592576 , SL:  1292.10941847 
+
+Total funds  9500
+
+
+Trade number:  30
+BOUGHT number of shares  16
+Stop loss  triggered at  2405  number of trade. Executed at value  1292.10941847
+Loss:  0.0
+SL:  1289.26677775 , TP: 1297.27785614 
+
+Total funds  7900
+
+
+Trade number:  31
+SOLD number of shares  32
+Stop loss  triggered at  2573  number. Trade executed at value  1289.26677775
+Loss:  0.0
+TP: 1284.10971064 , SL:  1292.10316466 
+
+Total funds  4700
+
+
+Total number of trades:  32
+Total Loss  0.0
+Total profit  0.0

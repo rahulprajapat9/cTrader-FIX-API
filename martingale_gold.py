@@ -1,24 +1,11 @@
 import random
 import matplotlib
-import matplotlib.pyplot as plt
+from matplotlib import pyplot
 import time
 import pandas
 
-def rollDice():
-    roll = random.randint(1,100)
-
-    if roll == 100:
-        print roll, 'roll was 100, you lose. what are the odds? play again.'
-        return False
-    elif roll <=40:
-        print roll, 'roll was 1-50, you lose again, play again'
-        return False
-    elif 100>roll>40:
-        print roll, 'roll was 51-99, you win, play more'
-        return True
-
 def read_gold_data():
-    gold_data = pandas.DataFrame.from_csv("gold_data.csv")
+    gold_data = pandas.DataFrame.from_csv("gold_data_more.csv")
     gold_data = gold_data[['open','high','low','close']]
     gold_data.reset_index()
 
@@ -26,92 +13,196 @@ def read_gold_data():
 
     return gold_data
 
-def doubler_bettor_gold(funds, gold_data, wager_count):
+def doubler_bettor_gold(funds, gold_data):
+
+    initial_wager = 100
+
     value = funds
-    wager_init = gold_data[0]['open']
-    print 'The very first buy at ', wager_init
+    wager = initial_wager
+    previousWagerAmount = initial_wager
+
+    total_loss = 0
+    total_profit = 0
+
+    shares = 1
+    trade_init = gold_data.iloc[0]['open']
+    print '\nBOUGHT the very first at ', trade_init
 
     SL_pct = 0.22
     TP_pct = 0.4
 
-    SL = wager_init*SL_pct/100
-    TP = wager_init*TP_pct/100
-
-    min_of_trade = min(gold_data[1]['open'], gold_data[1]['low'], gold_data[1]['high'], gold_data[1]['close'])
-    max_of_trade = max(gold_data[1]['open'], gold_data[1]['low'], gold_data[1]['high'], gold_data[1]['close'])
-
-    if min_of_trade < SL:
-        print 'Stop loss triggered'
-        #wager_init =
-
-    elif max_of_trade > TP:
-        print 'Target point achieved'
-        #wager_init =
-
-    else:
-        pass
-
     wX = []
     vY = []
 
-    currentWager = 1
-    previousWager = 'win'
-    previousWagerAmount = initial_wager
+    number_of_trades = 1
+    if number_of_trades % 2:
+        SL = trade_init - trade_init * SL_pct / 100
+        TP = trade_init + trade_init * TP_pct / 100
+        target = [SL, TP]
 
-    while currentWager <= wager_count:
-        if previousWager == 'win':
-            print 'We won last wager. wohoo!'
-            if rollDice():
-                value+=wager
-                print value
-                wX.append(currentWager)
-                vY.append(value)
-            else:
-                value-=wager
-                previousWager='loss'
-                print value
-                previousWagerAmount = wager
-                wX.append(currentWager)
-                vY.append(value)
-                if value<0:
-                    print 'we went broke after ',currentWager,' bets'
-                    break
+        event = ['Stop loss', 'Target point']
+        print 'SL: ',SL,', TP:',TP,'\n'
+        next_trade = 'SOLD'
 
+        wX.append(number_of_trades)
+        vY.append(value)
 
-        elif previousWager == 'loss':
-            print 'We lost the last one, so we will double it now'
-            if rollDice():
-                wager = previousWagerAmount*2
-                print 'We won ', wager
-                value += wager
-                print value
-                wager = initial_wager
-                previousWager = 'win'
-                wX.append(currentWager)
-                vY.append(value)
-            else:
-                wager = previousWagerAmount*2
-                print 'we lost ', wager
+    else:
+        SL = trade_init + trade_init * SL_pct / 100
+        TP = trade_init - trade_init * TP_pct / 100
+        target = [TP, SL]
+
+        event = ['Target point', 'Stop loss']
+        print 'TP:',TP,', SL: ',SL,'\n'
+        next_trade = 'BOUGHT'
+
+        wX.append(number_of_trades)
+        vY.append(value)
+
+    for i in range(gold_data.shape[0]):
+        min_of_trade = min(
+            gold_data.iloc[i]['open'],
+            gold_data.iloc[i]['low'],
+            gold_data.iloc[i]['high'],
+            gold_data.iloc[i]['close'],
+        )
+        max_of_trade = max(
+            gold_data.iloc[i]['open'],
+            gold_data.iloc[i]['low'],
+            gold_data.iloc[i]['high'],
+            gold_data.iloc[i]['close'],
+        )
+
+        # 0 : Buy
+        # 1 : Sell
+        # If else statement are devided on the basis of buy and sell only
+
+        if min_of_trade < target[0]:
+            print 'Trade number: ', number_of_trades
+            print next_trade+' number of shares ', shares
+            print event[0],' triggered at ',i+1,' number. Trade executed at value ', target[0]
+
+            trade_init = target[0]
+
+            if event[0] == 'Stop loss':
+
+                loss = abs(trade_init-SL)
+                loss = loss*shares
+                total_loss += loss
+                print 'Loss: ', loss
+
+                shares = shares*2
                 value -= wager
-                if value < 0:
-                    print 'We went broke after ', currentWager, 'bets'
-                    break
-
-                print value
-                previousWager = 'loss'
-
+                wager = previousWagerAmount * 2
                 previousWagerAmount = wager
-                wX.append(currentWager)
+
+            else:
+
+                profit = abs(trade_init - TP)
+                profit = profit*shares
+                total_profit += profit
+                print 'Profit: ', profit
+
+                shares = 1
+                value += wager
+                wager = initial_wager
+                previousWagerAmount = wager
+
+            number_of_trades += 1
+            if number_of_trades % 2:
+                SL = trade_init - trade_init * SL_pct / 100
+                TP = trade_init + trade_init * TP_pct / 100
+                target = [SL, TP]
+
+                event = ['Stop loss', 'Target point']
+                print 'SL: ', SL, ', TP:', TP, '\n'
+                print 'Total funds ', value
+                print '\n'
+                next_trade = 'SOLD'
+
+                wX.append(number_of_trades)
                 vY.append(value)
 
-        currentWager += 1
+            else:
+                SL = trade_init + trade_init * SL_pct / 100
+                TP = trade_init - trade_init * TP_pct / 100
+                target = [TP, SL]
 
-    print value
-    plt.plot(wX,vY)
+                event = ['Target point', 'Stop loss']
+                print 'TP:', TP, ', SL: ', SL, '\n'
+                print 'Total funds ', value
+                print '\n'
+                next_trade = 'BOUGHT'
 
+                wX.append(number_of_trades)
+                vY.append(value)
+
+
+        elif max_of_trade > target[1]:
+            print 'Trade number: ', number_of_trades
+            print next_trade+' number of shares ', shares
+            print event[1],' triggered at ',i+1,' number of trade. Executed at value ', target[1]
+
+            trade_init = target[1]
+
+            if event[1] == 'Stop loss':
+
+                loss = abs(trade_init - SL)
+                loss = loss*shares
+                total_loss += loss
+                print 'Loss: ', loss
+
+                shares = shares*2
+                value -= wager
+                wager = previousWagerAmount * 2
+                previousWagerAmount = wager
+            else:
+
+                profit = abs(trade_init - TP)
+                profit = profit*shares
+                total_profit += profit
+                print 'Profit: ', profit
+
+                shares = 1
+                value += wager
+                wager = initial_wager
+                previousWagerAmount = wager
+
+            number_of_trades += 1
+            if number_of_trades % 2:
+                SL = trade_init - trade_init * SL_pct / 100
+                TP = trade_init + trade_init * TP_pct / 100
+                target = [SL, TP]
+
+                event = ['Stop loss', 'Target point']
+                print 'SL: ', SL, ', TP:', TP, '\n'
+                print 'Total funds ', value
+                print '\n'
+                next_trade = 'SOLD'
+
+                wX.append(number_of_trades)
+                vY.append(value)
+
+            else:
+                SL = trade_init + trade_init * SL_pct / 100
+                TP = trade_init - trade_init * TP_pct / 100
+                target = [TP, SL]
+
+                event = ['Target point', 'Stop loss']
+                print 'TP:', TP, ', SL: ', SL, '\n'
+                print 'Total funds ', value
+                print '\n'
+                next_trade = 'BOUGHT'
+
+                wX.append(number_of_trades)
+                vY.append(value)
+
+    print 'Total number of trades: ', number_of_trades
+    print 'Total Loss ', total_loss
+    print 'Total profit ', total_profit
+
+    pyplot.plot(wX, vY,'o')
 
 gold_data = read_gold_data()
-doubler_bettor_gold(10000,gold_data,1000)
-plt.show()
-
-time.sleep(55)
+doubler_bettor_gold(10000,gold_data)
+pyplot.show()
