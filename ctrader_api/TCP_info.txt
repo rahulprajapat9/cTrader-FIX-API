@@ -1,0 +1,20 @@
+** Price Connection **
+
+Host name: h58.p.ctrader.com 
+(Current IP address 185.212.202.23 can be changed without notice)
+Port: 5211 (SSL), 5201 (Plain text).
+Password: (a/c 3224363 password)
+SenderCompID: pepperstone.3224363
+TargetCompID: CSERVER
+SenderSubID: QUOTE
+
+
+** Trade Connection **
+
+Host name: h58.p.ctrader.com 
+(Current IP address 185.212.202.23 can be changed without notice)
+Port: 5212 (SSL), 5202 (Plain text).
+Password: (a/c 3224363 password)
+SenderCompID: pepperstone.3224363
+TargetCompID: CSERVER
+SenderSubID: TRADE
