@@ -1,10 +1,10 @@
 import socket
 
 def Main():
-    host = '127.0.0.1'
+    host = 'tcp://192.168.0.115'
     port = 5000
 
-    s = socket.socket()
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host, port))
 
     message = raw_input("->")
