@@ -18,3 +18,14 @@ Password: (a/c 3224363 password)
 SenderCompID: pepperstone.3224363
 TargetCompID: CSERVER
 SenderSubID: TRADE
+
+** Soumen Live Trading Account **
+Host name: h45.p.ctrader.com 
+(Current IP address 213.52.128.36 can be changed without notice)
+Port: 5211 (SSL), 5201 (Plain text)
+Password: ***** (a/c 2000038 password)
+SenderCompID: pepperstoneuk.2000038
+TargetCompID: cServer
+SenderSubID: QUOTE
+
+Duhita1510
