@@ -164,6 +164,50 @@ def MarketDataReq(seq_num, subscription_id):
 
     return headerAndBodyAndTrailer
 
+def MarketDataIncrementalRefresh(seq_num, subscription_id):
+
+    # Header
+    msg_type = 'X'
+
+    SenderCompID = 'pepperstone.3224363'
+    TargetCompID = 'CSERVER'
+
+    #SenderSubID = 'QUOTE'
+    SenderSubID = 'any_string'
+    TargetSubID = 'QUOTE'
+    messageSequenceNumber = seq_num
+
+    header, message = ConstructHeader(msg_type, SenderCompID, TargetCompID, SenderSubID, TargetSubID, messageSequenceNumber)
+
+    # Body
+    body = "262="+subscription_id+"|263=1|264=1|269=0|268=2|279=0|55=41|270=0|"
+
+    length = len(message) + len(body)
+    # FIX version + len of msg
+    header += "9=" + str(length) + "|"
+
+    # FIX version + len of msg + rest of the header
+    header = header + message
+
+    # FIX version + len of msg + rest of the header + body (login)
+    headerAndBody = header + body
+
+    #headerAndBody = '8=FIX.4.4|9=126|35=A|49=theBroker.12345|56=CSERVER|34=1|52=20170117-08:03:04|57=TRADE|50=any_string|98=0|108=30|141=Y|553=12345|554=passw0rd!|'
+
+    # Trailer
+    chksum = ConstructTrailer(headerAndBody)
+    trailer = "10="+str(chksum)+"|"
+    #trailer = "10=254|"
+    # 254 QUOTE, 224 TRADE
+
+    headerAndBodyAndTrailer = headerAndBody + trailer
+
+    headerAndBodyAndTrailer = headerAndBodyAndTrailer.replace("|", chr(0x01))
+
+    # ctrader packet constructor finished
+
+    return headerAndBodyAndTrailer
+
 def Main():
     host = 'h58.p.ctrader.com'
     port = 5201
@@ -181,28 +225,56 @@ def Main():
     data = str(data)
     a = data[9]
     data = data.replace(a, '|')
-    print '\n\nLOGON RESP ', seq_num, '  :  ', data
+    print '\n\nLOGON RESP :  ', data
 
     subscription_id = 876316403
     seq_num = 2
+
+
+
+
+
+    # Market Req Data
+    headerAndBodyAndTrailer = MarketDataReq(str(seq_num), str(subscription_id))
+    print 'MARTKET_DATA_REQ packet sent to ctrader!!!'
+    s.send(headerAndBodyAndTrailer)
+
+    data = s.recv(1024)
+    data = str(data)
+    a = data[9]
+    data = data.replace(a, '|')
+    print '\n\nXAUUSD: ', seq_num-1, '  :  ', data
+
+    #if seq_num%2 :
+    #    subscription_id += 100
+
+    seq_num += 1
+
+
+
     while(1):
         # Market Req Data
-        headerAndBodyAndTrailer = MarketDataReq(str(seq_num), str(subscription_id))
-        print 'MARTKET_DATA_REQ packet sent to ctrader!!!'
+        headerAndBodyAndTrailer = MarketDataIncrementalRefresh(str(seq_num), str(subscription_id))
+        print 'MARTKET_DATA_INCREMENTAL_REFRESH packet sent to ctrader!!!'
         s.send(headerAndBodyAndTrailer)
 
         data = s.recv(1024)
         data = str(data)
         a = data[9]
         data = data.replace(a, '|')
-        print '\n\nXAUUSD: ', seq_num, '  :  ', data
+        print '\n\nXAUUSD: ', seq_num - 1, '  :  ', data
 
-        if seq_num%2 :
-            subscription_id += 100
+        time.sleep(1)
 
         seq_num += 1
 
-        time.sleep(1)
+
+
+
+
+
+
+
 
     time.sleep(1000)
 
