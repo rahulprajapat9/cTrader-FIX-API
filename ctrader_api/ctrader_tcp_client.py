@@ -180,7 +180,8 @@ def MarketDataIncrementalRefresh(seq_num, subscription_id):
     header, message = ConstructHeader(msg_type, SenderCompID, TargetCompID, SenderSubID, TargetSubID, messageSequenceNumber)
 
     # Body
-    body = "262="+subscription_id+"|263=1|264=1|269=0|268=2|279=0|55=41|270=0|"
+    #body = "262="+subscription_id+"|263=1|264=1|269=0|268=2|279=0|55=41|270=0|"
+    body = "262=" + subscription_id + "|263=1|264=1|269=0|268=2|279=0|55=41|270=0|"
 
     length = len(message) + len(body)
     # FIX version + len of msg
