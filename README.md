@@ -1,2 +1,2 @@
-# frankfurt_hackathon
-Frankfurt hackathon
+# cTrader-FIX-API
+For FX trading
